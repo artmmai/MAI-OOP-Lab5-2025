@@ -3,7 +3,6 @@
 #include "vector_iterator.h"
 #include <memory_resource>
 #include <stdexcept>
-#include <utility>
 
 namespace my_vector {
 
