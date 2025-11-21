@@ -15,9 +15,9 @@ ListMemoryResource::~ListMemoryResource() {
     blocks.clear();
 }
 
-// Поиск свободного блока нужного размера выравнивание
 void* ListMemoryResource::do_allocate(size_t bytes, size_t alignment) {
     for (BlockInfo& block : blocks) {
+        // === 2. Повторное переиспользование ранее освобождённой памяти ===
         if (!block.is_allocated && block.size >= bytes && block.alignment >= alignment) {
             block.is_allocated = true;
             std::cout << "REUSED memory at " << block.ptr << " for " << bytes << " bytes\n";

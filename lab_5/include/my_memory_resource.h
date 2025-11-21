@@ -13,6 +13,7 @@ struct BlockInfo {
     bool is_allocated; 
 };
 
+// === 1. Наследование от std::pmr::memory_resource ===
 class ListMemoryResource : public std::pmr::memory_resource {
 public:
     ListMemoryResource() = default;
@@ -22,11 +23,13 @@ public:
     ListMemoryResource& operator=(const ListMemoryResource&) = delete;
 
 private:
-    std::list<BlockInfo> blocks; // список блоков памяти
+    // Для каждого объекта выделяется блок памяти на куче
+    // информация о выделенных блоках хранится в std::list
+    std::list<BlockInfo> blocks;
 
     void* do_allocate(size_t bytes, size_t alignment) override;
     void do_deallocate(void* p, size_t bytes, size_t alignment) override;
     bool do_is_equal(const std::pmr::memory_resource& other) const noexcept override;
 };
 
-}
+} // namespace my_vector

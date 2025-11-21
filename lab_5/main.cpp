@@ -4,6 +4,8 @@
 #include <string>
 #include <cstddef>
 
+// === ДЕМОНСТРАЦИЯ РАБОТЫ КОНТЕЙНЕРА С ПРОСТЫМИ И СЛОЖНЫМИ ПОЛЯМИ ===
+
 struct Employee {
     std::string name; 
     int id;
@@ -97,13 +99,12 @@ void demonstrate_exception_handling() {
     
     std::cout << "Добавление элементов и проверка работы методов (front, back)" << std::endl;
     vec.push_back(42);
-    vec.push_back(99);
+    vec.push_back(404);
     std::cout << "Front: " << vec.front() << ", Back: " << vec.back() << std::endl << std::endl;
 }
 
 int main() {
-    std::cout << "===================================" << std::endl;
-    
+        
     try {
         demonstrate_simple_types();
         demonstrate_complex_types();
